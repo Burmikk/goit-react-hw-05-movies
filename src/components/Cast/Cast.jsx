@@ -15,7 +15,7 @@ const Cast = () => {
       } catch (error) {}
     };
     fetchCast();
-  }, []);
+  }, [params.movieId]);
 
   const castMarkup = cast.map(({ profile_path, character, name, cast_id }) => (
     <li key={cast_id}>
