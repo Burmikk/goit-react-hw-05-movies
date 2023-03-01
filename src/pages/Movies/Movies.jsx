@@ -5,7 +5,6 @@ import { getMovieBySearch } from 'shared/api/moviesApi';
 import MovieList from 'shared/MovieList/MovieList';
 
 const Movies = () => {
-  const [state, setState] = useState('');
   const [movies, setMovies] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,7 +23,6 @@ const Movies = () => {
   }, [search]);
 
   const handleSearch = value => {
-    setState(value);
     setSearchParams({ search: value });
   };
 
