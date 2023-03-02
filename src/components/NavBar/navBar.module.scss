@@ -1,0 +1,16 @@
+.nav {
+  display: flex;
+  gap: 20px;
+  height: 50px;
+  align-items: center;
+  background-color: #2a2c33;
+  padding: 10px;
+  color: white;
+}
+
+.link {
+  font-size: 18px;
+  &:global(.active) {
+    border-bottom: 3px solid white;
+  }
+}

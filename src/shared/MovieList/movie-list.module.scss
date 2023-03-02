@@ -1,0 +1,13 @@
+.item {
+  width: 295px;
+  padding-bottom: 20px;
+  transition: 500ms scale;
+  &:hover {
+    scale: 1.05;
+  }
+}
+
+.title {
+  text-align: center;
+  padding-top: 10px;
+}

@@ -4,7 +4,7 @@ import { getMovieReviews } from 'shared/api/moviesApi';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
-
+  const [error, setError] = useState('');
   const params = useParams();
 
   useEffect(() => {
@@ -12,7 +12,9 @@ const Reviews = () => {
       try {
         const { data } = await getMovieReviews(params.movieId);
         setReviews(data.results);
-      } catch (error) {}
+      } catch (error) {
+        setError(error.message || 'Something wrong! Try later!');
+      }
     };
     fetchReviews();
   }, [params.movieId]);
@@ -28,11 +30,17 @@ const Reviews = () => {
   }
 
   return (
-    <ul>
-      {reviews.length
-        ? reviewMarkup
-        : 'We dont have any reviews for this movie'}
-    </ul>
+    <>
+      {error ? (
+        <p>{error} </p>
+      ) : (
+        <ul>
+          {reviews.length
+            ? reviewMarkup
+            : 'We dont have any reviews for this movie'}
+        </ul>
+      )}
+    </>
   );
 };
 export default Reviews;

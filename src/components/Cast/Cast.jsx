@@ -4,7 +4,7 @@ import { getMovieCast } from 'shared/api/moviesApi';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
-
+  const [error, setError] = useState('');
   const params = useParams();
 
   useEffect(() => {
@@ -12,7 +12,9 @@ const Cast = () => {
       try {
         const { data } = await getMovieCast(params.movieId);
         setCast(data.cast);
-      } catch (error) {}
+      } catch (error) {
+        setError(error.message || 'Something wrong! Try later!');
+      }
     };
     fetchCast();
   }, [params.movieId]);
@@ -29,6 +31,16 @@ const Cast = () => {
     </li>
   ));
 
-  return <ul>{castMarkup}</ul>;
+  return (
+    <>
+      {error ? (
+        <p>{error}</p>
+      ) : cast.length !== 0 ? (
+        <ul> {castMarkup}</ul>
+      ) : (
+        <p>We dont have any information about cast for this movie</p>
+      )}
+    </>
+  );
 };
 export default Cast;

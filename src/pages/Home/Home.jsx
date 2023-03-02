@@ -1,9 +1,10 @@
 import TrendingMovies from 'components/TrendingMovies/TrendingMovies';
+import scss from './home.module.scss';
 
 const Home = () => {
   return (
     <>
-      <h2>Trending today</h2>
+      <h2 className={scss.title}>Trending today</h2>
       <TrendingMovies />
     </>
   );
