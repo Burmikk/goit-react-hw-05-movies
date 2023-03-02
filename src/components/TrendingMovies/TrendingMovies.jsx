@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getTrendingMovies } from 'shared/api/moviesApi';
 import MovieList from 'shared/MovieList/MovieList';
-import scss from './trending-movies.module.scss';
 
 const TrendingMovies = () => {
   const [trend, setTrend] = useState([]);
