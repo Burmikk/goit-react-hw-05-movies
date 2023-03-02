@@ -37,11 +37,7 @@ const Movies = () => {
       <SearchForm onSearch={handleSearch} />
 
       {error && <p>{error}</p>}
-      {movies.length > 0 && (
-        <ul>
-          <MovieList movies={movies} />
-        </ul>
-      )}
+      {movies.length > 0 && <MovieList movies={movies} />}
       {search && movies.length === 0 && !error && (
         <p>Cant find movie: {search}</p>
       )}

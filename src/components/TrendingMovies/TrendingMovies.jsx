@@ -19,16 +19,6 @@ const TrendingMovies = () => {
     fetchTrend();
   }, []);
 
-  return (
-    <>
-      {error ? (
-        <p>{error}</p>
-      ) : (
-        <ul className={scss.list}>
-          <MovieList movies={trend} />
-        </ul>
-      )}
-    </>
-  );
+  return <>{error ? <p>{error}</p> : <MovieList movies={trend} />}</>;
 };
 export default TrendingMovies;

@@ -1,4 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
+import { BsSearch } from 'react-icons/bs';
+import PropTypes from 'prop-types';
+import scss from './search-form.module.scss';
 
 const SearchForm = ({ onSearch }) => {
   const [search, setSearch] = useState('');
@@ -21,16 +24,23 @@ const SearchForm = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={scss.form} onSubmit={handleSubmit}>
       <input
+        className={scss.input}
         type="text"
         onChange={handleChange}
         value={search}
         ref={inputRef}
       />
-      <button>Find</button>
+      <button className={scss.btn}>
+        <BsSearch />
+      </button>
     </form>
   );
+};
+
+SearchForm.propTypes = {
+  onSearch: PropTypes.func.isRequired,
 };
 
 export default SearchForm;
