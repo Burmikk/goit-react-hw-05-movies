@@ -1,0 +1,13 @@
+.cast_list {
+  width: 1240px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.cast_item {
+  width: calc((100% - 60px) / 4);
+}
+
+.cast_img {
+  width: 100%;
+}
