@@ -1,4 +1,4 @@
-import { useEffect, useState, memo } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'shared/api/moviesApi';
 import scss from './cast.module.scss';
@@ -9,16 +9,13 @@ const Cast = () => {
   const params = useParams();
 
   useEffect(() => {
-    setTimeout(() => {
-      scroll();
-    }, 200);
+    setTimeout(() => {}, 200);
   }, []);
 
   const scroll = () => {
     const { height: cardHeight } = document
       .querySelector('#wrapper')
       .firstElementChild.getBoundingClientRect();
-    console.log(cardHeight);
     window.scrollBy({
       top: cardHeight,
       behavior: 'smooth',
@@ -36,6 +33,8 @@ const Cast = () => {
     };
     fetchCast();
   }, [params.movieId]);
+
+  window.onload = scroll();
 
   const castMarkup = cast.map(({ profile_path, character, name, cast_id }) => (
     <li className={scss.cast_item} key={cast_id}>
@@ -62,4 +61,4 @@ const Cast = () => {
     </>
   );
 };
-export default memo(Cast);
+export default Cast;
